@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-maindir='/data/projects/STUDIES/social_doors_college'
+maindir='/data/projects/STUDIES/social_doors_jw'
 
 sub=$1
 nruns=2
