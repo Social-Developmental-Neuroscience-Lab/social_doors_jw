@@ -1,3 +1,5 @@
+# JW: This file copied directly from srndna-trust/code/L1stats.sh;
+
 #!/usr/bin/env bash
 
 # This script will perform Level 1 statistics in FSL.
@@ -14,19 +16,20 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
 
 # study-specific inputs
-TASK=trust
+TASK=social_doors
 sm=6
 sub=$1
 run=$2
 ppi=$3 # 0 for activation, otherwise seed region or network
 
+# JW: following code commented out:
 # list of exclusions/skips (study specific)
-if [ $sub -eq 150 -a $run -eq 2 ]; then
-	echo "participant fell asleep. skip run"
-	exit
-fi
+# if [ $sub -eq 150 -a $run -eq 2 ]; then
+# 	echo "participant fell asleep. skip run"
+# 	exit
+# fi
 
-# set inputs and general outputs (should not need to chage across studies in Smith Lab)
+# set inputs and general outputs (should not need to change across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
 DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
