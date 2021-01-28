@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+<<<<<<< HEAD
 maindir='/data/projects/STUDIES/social_doors_jw'
+=======
+maindir='/data/projects/STUDIES/social_doors_college'
+>>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
 
 sub=$1
 nruns=2

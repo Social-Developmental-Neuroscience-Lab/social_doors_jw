@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+<<<<<<< HEAD
 maindir="/data/projects/STUDIES/social_doors_jw"
+=======
+maindir="/data/projects/STUDIES/social_doors_college_jw/analysis_college"
+>>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
 TASK=srSociala
 cd $maindir
 
@@ -51,7 +55,11 @@ else
 	rm -rf ${OUTPUT}.feat
 fi
 
+<<<<<<< HEAD
 ITEMPLATE=/data/projects/STUDIES/social_doors_college/code/templates/design.fsf
+=======
+ITEMPLATE=${maindir}/code/templates/design.fsf
+>>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_seed-${ppi}_run-0${run}_variant-${dtype}.fsf
 
 if [ "$ppi" == "0" ]; then
