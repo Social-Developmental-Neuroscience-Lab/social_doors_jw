@@ -12,8 +12,9 @@
 # Seed-based PPI and Network PPI should follow activation analyses.
 
 # ensure paths are correct irrespective from where user runs the script
-scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-maindir="$(dirname "$scriptdir")"
+#scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+#maindir="$(dirname "$scriptdir")"
+
 
 # study-specific inputs
 TASK=srDoors #inputs: 'srDoors' or 'srSocial'
@@ -35,6 +36,14 @@ MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
 DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}{BLOCK}_run-${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
 CONFOUNDEVS=${maindir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}{BLOCK}_run-${run}_desc-fslConfounds.tsv
+
+DESC=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_decision.txt
+LEFT=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_Ldecision.txt
+RIGHT=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_Rdecision.txt
+INS=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_instruction.txt
+COR=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_correct.txt
+INC=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_incorrect.txt
+
 if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing: $CONFOUNDEVS " >> ${maindir}/re-runL1.log
 	exit # exiting to ensure nothing gets run without confounds
@@ -96,14 +105,14 @@ if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 	-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 	-e 's@MAINNET@'$MAINNET'@g' \
 	-e 's@OTHERNET@'$OTHERNET'@g' \
-	-e 's@INPUT0@'$INPUT0'@g' \
-	-e 's@INPUT1@'$INPUT1'@g' \
-	-e 's@INPUT2@'$INPUT2'@g' \
-	-e 's@INPUT4@'$INPUT4'@g' \
-	-e 's@INPUT5@'$INPUT5'@g' \
-	-e 's@INPUT6@'$INPUT6'@g' \
-	-e 's@INPUT8@'$INPUT8'@g' \
-	-e 's@INPUT9@'$INPUT9'@g' \
+	-e 's@DESC@'$DESC'@g' \
+	-e 's@LEFT@'$LEFT'@g' \
+	-e 's@RIGHT@'$RIGHT'@g' \
+	-e 's@INS@'$INS'@g' \
+	-e 's@COR@'$COR'@g' \
+	-e 's@INC@'$INC'@g' \
+	-e 's@SMOOTH@'$sm'@g' \
+	-e 's@LENGTH@'$LENGTH'@g' \
 	<$ITEMPLATE> $OTEMPLATE
 	feat $OTEMPLATE
 
