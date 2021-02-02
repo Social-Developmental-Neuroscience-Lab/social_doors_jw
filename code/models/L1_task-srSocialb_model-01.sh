@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 maindir="/data/projects/STUDIES/social_doors_jw"
-=======
+#=======
 maindir="/data/projects/STUDIES/social_doors_college/analysis_college"
->>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
+#>>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
 TASK=srSocialb
 cd $maindir
 
 sub=$1
-run=$2
+run=$1
 ppi=$3 # 0 for activation, otherwise name of the roi
 sm=$4
 dtype=dctAROMAnonaggr
@@ -24,7 +24,7 @@ MAINOUTPUT=${maindir}/derivatives/fsl/results/lowerLv_results/sub-${sub}
 DATA=/data/projects/STUDIES/social_doors_college/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
 CONFOUNDEVS=${maindir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_desc-fslConfounds.tsv
 
-DESC=${maindir}/behavior/EVfiles/${sub}/social/run-0${run}_b_decision.txt
+#DESC=${maindir}/behavior/EVfiles/${sub}/social/run-0${run}_b_decision.txt
 
 LEFT=${maindir}/behavior/EVfiles/${sub}/social/run-0${run}_b_Ldecision.txt
 
@@ -55,18 +55,18 @@ else
 	rm -rf ${OUTPUT}.feat
 fi
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ITEMPLATE=/data/projects/STUDIES/social_doors_college/code/templates/design.fsf
-=======
+#=======
 ITEMPLATE=${maindir}/code/templates/design.fsf
->>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
+#>>>>>>> 2941b50b2a5a113b9462663aa45df08c6a869588
 OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-01_seed-${ppi}_run-0${run}_variant-${dtype}.fsf
 
 if [ "$ppi" == "0" ]; then
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@DATA@'$DATA'@g' \
 	-e 's@EVDIR@'$EVDIR'@g' \
-	-e 's@DESC@'$DESC'@g' \
+#	-e 's@DESC@'$DESC'@g' \
 	-e 's@LEFT@'$LEFT'@g' \
 	-e 's@RIGHT@'$RIGHT'@g' \
 	-e 's@INS@'$INS'@g' \

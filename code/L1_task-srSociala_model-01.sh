@@ -17,12 +17,10 @@ maindir="$(dirname "$scriptdir")"
 
 
 # study-specific inputs
-TASK=Doors #inputs: 'Doors' or 'Social'
-task=doors #match above, but lowercase
-block=a #a or b
+TASK=srSociala #inputs: 'srDoorsa', 'srDoorsb', 'srSociala', or 'srSocialb'
 sm=6
 sub=$1
-run=$2 
+run=$1 
 ppi=$3 # 0 for activation, otherwise seed region or network
 
 # JW: following code commented out:
@@ -38,12 +36,12 @@ mkdir -p $MAINOUTPUT
 DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
 CONFOUNDEVS=${maindir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_desc-fslConfounds.tsv
 
-#DESC=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_decision.txt
-LEFT=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_Ldecision.txt
-RIGHT=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_Rdecision.txt
-INS=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_instruction.txt
-COR=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_correct.txt
-INC=${maindir}/behavior/EVfiles/${sub}/${task}/run-0${run}_${block}_incorrect.txt
+#DESC=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_decision.txt
+LEFT=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_Ldecision.txt
+RIGHT=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_Rdecision.txt
+INS=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_instruction.txt
+COR=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_correct.txt
+INC=${maindir}/behavior/EVfiles/${sub}/doors/run-0${run}_a_incorrect.txt
 
 if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing: $CONFOUNDEVS " >> ${maindir}/re-runL1.log
